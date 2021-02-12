@@ -39,7 +39,7 @@ const Header = (title, date, temp) => {
 
 const headerAppender = (selector) => {
   const attachmentPoint = document.querySelector(`${selector}`);
-  const newHeader1 = Header();
+  const newHeader1 = Header('sprint challenge', 'February 12th', '70 degrees farenheit');
   attachmentPoint.appendChild(newHeader1);
   // TASK 2
   // ---------------------

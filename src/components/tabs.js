@@ -33,9 +33,9 @@ const Tabs = (topics) => {
 const tabsAppender = (selector) => {
   axios.get(`https://lambda-times-api.herokuapp.com/topics`)
     .then( response => {
-      const newattachmentPoint = document.querySelector(`${selector}`);
+      const attachmentPoint = document.querySelector(`${selector}`);
       const newestTopics = Tabs(response.body.topics);
-      newattachmentPoint.appendChild(newestTopics);
+      attachmentPoint.appendChild(newestTopics);
     })
   
 

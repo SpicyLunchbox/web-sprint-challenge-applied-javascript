@@ -1,4 +1,34 @@
+import axios from "axios";
+
 const Card = (article) => {
+
+  const newCard = document.createElement('div');
+  const headline = document.createElement('div');
+  const author = document.createElement('div');
+  const imageContainer = document.createElement('div');
+  const authorPhoto = document.createElement('img');
+  const authorName = document.createElement('span');
+
+  newCard.classList.add('card');
+  headline.classList.add('headline');
+  author.classList.add('author');
+  imageContainer.classList.add('img-container');
+
+  newCard.appendChild(headline);
+  newCard.appendChild(author);
+  author.appendChild(imageContainer);
+  imageContainer.appendChild(authorPhoto);
+  author.appendChild(authorName);
+
+  headline.textContent = article.headline;
+  authorPhoto.src = article.authorPhoto;
+  authorName.textContent = `By ${article.authorName}`;
+
+  newCard.addEventListener('click', () => {
+    console.log(article.headline);
+  })
+
+  return newCard;
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -20,6 +50,30 @@ const Card = (article) => {
 }
 
 const cardAppender = (selector) => {
+  axios.get(`https://lambda-times-api.herokuapp.com/articles`)
+    .then( response => {
+      const attachmentPoint = document.querySelector(`${selector}`);
+      response.body.articles.bootstrap.forEach(article => {
+        const newArticle = Card(article);
+        attachmentPoint.appendChild(newArticle);
+      })
+      response.body.articles.javascript.forEach(article => {
+        const newArticle = Card(article);
+        attachmentPoint.appendChild(newArticle);
+      })
+      response.body.articles.jquery.forEach(article => {
+        const newArticle = Card(article);
+        attachmentPoint.appendChild(newArticle);
+      })
+      response.body.articles.node.forEach(article => {
+        const newArticle = Card(article);
+        attachmentPoint.appendChild(newArticle);
+      })
+      response.body.articles.technology.forEach(article => {
+        const newArticle = Card(article);
+        attachmentPoint.appendChild(newArticle);
+      })
+    })
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
