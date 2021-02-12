@@ -33,11 +33,11 @@ const Tabs = (topics) => {
 }
 
 const tabsAppender = (selector) => {
-  axios.get(`https://lambda-times-api.herokuapp.com/topics`)
-    .then( response => {
-      const attachmentPoint = document.querySelector(`${selector}`);
-      const newestTopics = Tabs(response.data.topics);
-      attachmentPoint.appendChild(newestTopics);
+  axios.get(`https://lambda-times-api.herokuapp.com/topics`) //requests data from API
+    .then( response => { //after data is received, execute next lines of code
+      const attachmentPoint = document.querySelector(`${selector}`); //create attachment point
+      const newestTopics = Tabs(response.data.topics); //look into receive data for array and use array as input for function
+      attachmentPoint.appendChild(newestTopics); //append new topics to document
     })
   
 
