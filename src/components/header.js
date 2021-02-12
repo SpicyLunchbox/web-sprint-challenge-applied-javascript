@@ -1,4 +1,28 @@
 const Header = (title, date, temp) => {
+
+  //creates elements in memory
+  const newHeader = document.createElement('div');
+  const newDate = document.createElement('span');
+  const newTitle = document.createElement('h1');
+  const newTemp = document.createElement('span');
+
+  //adds classes to elements
+  newHeader.classList.add('header');
+  newDate.classList.add('date');
+  newTemp.classList.add('temp');
+
+  //creates structure for markup
+  newHeader.appendChild(newDate);
+  newHeader.appendChild(newTitle);
+  newHeader.appendChild(newTemp);
+
+  //adds content to elements
+  newDate.textContent = date;
+  newTitle.textContent = title;
+  newTemp.textContent = temp;
+
+  return newHeader;
+
   // TASK 1
   // ---------------------
   // Implement this function taking `title`, `date` and `temp` as its 3 args and returning the markup below.
@@ -14,6 +38,8 @@ const Header = (title, date, temp) => {
 }
 
 const headerAppender = (selector) => {
+  const attachmentPoint = document.querySelector(selector);
+  attachmentPoint.appendChild(newHeader);
   // TASK 2
   // ---------------------
   // Implement this function taking a css selector as its only argument.
