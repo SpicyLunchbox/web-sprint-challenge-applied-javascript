@@ -53,23 +53,23 @@ const cardAppender = (selector) => {
   axios.get(`https://lambda-times-api.herokuapp.com/articles`)
     .then( response => {
       const attachmentPoint = document.querySelector(`${selector}`);
-      response.body.articles.bootstrap.forEach(article => {
+      response.data.articles.bootstrap.forEach(article => {
         const newArticle = Card(article);
         attachmentPoint.appendChild(newArticle);
       })
-      response.body.articles.javascript.forEach(article => {
+      response.data.articles.javascript.forEach(article => {
         const newArticle = Card(article);
         attachmentPoint.appendChild(newArticle);
       })
-      response.body.articles.jquery.forEach(article => {
+      response.data.articles.jquery.forEach(article => {
         const newArticle = Card(article);
         attachmentPoint.appendChild(newArticle);
       })
-      response.body.articles.node.forEach(article => {
+      response.data.articles.node.forEach(article => {
         const newArticle = Card(article);
         attachmentPoint.appendChild(newArticle);
       })
-      response.body.articles.technology.forEach(article => {
+      response.data.articles.technology.forEach(article => {
         const newArticle = Card(article);
         attachmentPoint.appendChild(newArticle);
       })
