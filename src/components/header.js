@@ -38,9 +38,9 @@ const Header = (title, date, temp) => {
 }
 
 const headerAppender = (selector) => {
-  const attachmentPoint = document.querySelector(`${selector}`);
-  const newHeader1 = Header('sprint challenge', 'February 12th', '70ºF');
-  attachmentPoint.appendChild(newHeader1);
+  const attachmentPoint = document.querySelector(`${selector}`); //creates attachment point
+  const newHeader1 = Header('sprint challenge', 'February 12th', '70ºF'); //runs function
+  attachmentPoint.appendChild(newHeader1); //appends newly created header to document
   // TASK 2
   // ---------------------
   // Implement this function taking a css selector as its only argument.

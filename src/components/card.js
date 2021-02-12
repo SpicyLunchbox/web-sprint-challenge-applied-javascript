@@ -2,6 +2,7 @@ import axios from "axios";
 
 const Card = (article) => {
 
+  //creates elements in memory
   const newCard = document.createElement('div');
   const headline = document.createElement('div');
   const author = document.createElement('div');
@@ -9,21 +10,25 @@ const Card = (article) => {
   const authorPhoto = document.createElement('img');
   const authorName = document.createElement('span');
 
+  //adds classes to elements
   newCard.classList.add('card');
   headline.classList.add('headline');
   author.classList.add('author');
   imageContainer.classList.add('img-container');
 
+  //creates structure for markup
   newCard.appendChild(headline);
   newCard.appendChild(author);
   author.appendChild(imageContainer);
   imageContainer.appendChild(authorPhoto);
   author.appendChild(authorName);
 
+  //adds content to elements
   headline.textContent = article.headline;
   authorPhoto.src = article.authorPhoto;
   authorName.textContent = `By ${article.authorName}`;
 
+  //on click, console will log headline of article
   newCard.addEventListener('click', () => {
     console.log(article.headline);
   })
@@ -50,10 +55,10 @@ const Card = (article) => {
 }
 
 const cardAppender = (selector) => {
-  axios.get(`https://lambda-times-api.herokuapp.com/articles`)
-    .then( response => {
-      const attachmentPoint = document.querySelector(`${selector}`);
-      response.data.articles.bootstrap.forEach(article => {
+  axios.get(`https://lambda-times-api.herokuapp.com/articles`) //request data from API
+    .then( response => { //after data is received, execute next lines of code
+      const attachmentPoint = document.querySelector(`${selector}`); // create attachment point
+      response.data.articles.bootstrap.forEach(article => { //I tried to create a .forEach() within a .forEach() to iterate over each object within articles, but it didn't want to work for me. perhaps I'll play with this later.
         const newArticle = Card(article);
         attachmentPoint.appendChild(newArticle);
       })

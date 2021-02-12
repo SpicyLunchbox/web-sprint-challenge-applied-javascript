@@ -2,9 +2,11 @@ import axios from "axios";
 
 const Tabs = (topics) => {
 
+  //creates topics element and gives it class
   const newTopics = document.createElement('div');
   newTopics.classList.add('topics');
 
+  //iterates over array and creates element, adds class, and inserts newly created element in topics parent element
   topics.forEach( topic => {
     const newTopic = document.createElement('div');
     newTopic.classList.add('tab');
